@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import Trash from "../../src/assets/trash.svg";
 import "./style.css";
 import api from "../../src/services/api";
+// eslint-disable-next-line no-undef
+const apiUrl = process.env.REACT_APP_API_URL;
 
 function Home() {
   
@@ -11,10 +13,8 @@ function Home() {
   const inputAge = useRef()
   const inputEmail = useRef()
 
-
-
   async function getUsers(){
-    const usersFromApi = await api.get('/usuarios')
+    const usersFromApi = await api.get(`${apiUrl}/usuarios`)
     
     setUsers(usersFromApi.data)
   }
